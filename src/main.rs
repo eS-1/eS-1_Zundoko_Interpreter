@@ -54,43 +54,49 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
             }
             else if order == "ドコズンズン"
             {
-                if buf[ptr] == 0
+                match buf[ptr]
                 {
-                    let mut w_count = 1;
-                    index += 18;
-                    while w_count > 0
+                    0 =>
                     {
-                        if index >= li_size
-                        {
-                            eprintln!("ドコズンドコがありません");
-                        }
-
-                        if &li[index..index + 18] == "ドコズンズン"
-                        {
-                            w_count += 1;
-                        }
-                        else if &li[index..index + 18] == "ドコズンドコ"
-                        {
-                            w_count -= 1;
-                        }
+                        let mut w_count = 1;
                         index += 18;
-                    }
-                }
-                else
-                {
-                    loop_vec.push(index);
+                        while w_count > 0
+                        {
+                            if index >= li_size
+                            {
+                                eprintln!("ドコズンドコがありません");
+                            }
+
+                            if &li[index..index + 18] == "ドコズンズン"
+                            {
+                                w_count += 1;
+                            }
+                            else if &li[index..index + 18] == "ドコズンドコ"
+                            {
+                                w_count -= 1;
+                            }
+                            index += 18;
+                        }
+                    },
+                    _ =>
+                    {
+                        loop_vec.push(index);
+                    },
                 }
             }
             else if order == "ドコズンドコ"
             {
-                if buf[ptr] != 0
+                match buf[ptr]
                 {
-                    index = loop_vec.pop().unwrap();
-                    loop_vec.push(index);
-                }
-                else
-                {
-                    loop_vec.pop();
+                    0 =>
+                    {
+                        loop_vec.pop();
+                    },
+                    _ =>
+                    {
+                        index = loop_vec.pop().unwrap();
+                        loop_vec.push(index);
+                    },
                 }
             }
             else if order == "ドコドコズン"
