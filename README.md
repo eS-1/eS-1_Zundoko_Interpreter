@@ -1,7 +1,7 @@
 # Zundoko Interpreter
 ズンドコスクリプトのインタープリタです。<br>
-[元ネタ1(ズンドコキヨシ)](https://twitter.com/kumiromilk/status/707437861881180160?s=20) <br>
-[元ネタ2(ズンドコスクリプト)](https://qiita.com/dankogai/items/86a740ec06ad07e129ef)
+[元ネタ様1(ズンドコキヨシ)](https://twitter.com/kumiromilk/status/707437861881180160?s=20) <br>
+[元ネタ様2(ズンドコスクリプト)](https://qiita.com/dankogai/items/86a740ec06ad07e129ef)
 
 ## 仕様
 | 文字 | 動作 |
@@ -14,4 +14,4 @@
 | ドコズンドコ | ポインタの指す値が0でなければ、前のドコズンズンまでジャンプ |
 | ドコドコズン | ポインタの値を出力 |
 | ドコドコドコ | 入力から1バイト読み込み、ポインタが指す値に代入 |
-| キ・ヨ・シ！ | "Hello, World!"を出力 |
+| キ・ヨ・シ！ | ズンドコキヨシを実行 |

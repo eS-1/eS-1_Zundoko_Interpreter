@@ -1,14 +1,14 @@
 use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Read};
-use rand::{Rng, XorShiftRng};
+use rand::Rng;
 
 const BUF_SIZE: usize = 10000;
 
 fn zundoko_kiyoshi()
 {
     let mut count = 0;
-    let mut rng = XorShiftRng::new_unseeded();
+    let mut rng = rand::thread_rng();
     loop
     {
         let zundoko: bool = rng.gen();
@@ -57,7 +57,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                     else
                     {
                         eprintln!("ポインタが大きすぎます");
-                        break;
+                        break
                     }
                 },
                 "ズンズンドコ" =>
@@ -69,7 +69,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                     else
                     {
                         eprintln!("ポインタが負になりました");
-                        break;
+                        break
                     }
                 },
                 "ズンドコズン" =>
@@ -93,7 +93,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                                 if index >= li_size
                                 {
                                     eprintln!("ドコズンドコがありません");
-                                    break;
+                                    break
                                 }
 
                                 if &li[index..index + 18] == "ドコズンズン"
@@ -145,7 +145,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                 _ =>
                 {
                     eprintln!("ズンドコできません");
-                    break;
+                    break
                 },
             }
             index += 18;
