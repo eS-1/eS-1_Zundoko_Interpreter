@@ -1,8 +1,33 @@
 use std::env;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Read};
+use rand::{Rng, XorShiftRng};
 
 const BUF_SIZE: usize = 10000;
+
+fn zundoko_kiyoshi()
+{
+    let mut count = 0;
+    let mut rng = XorShiftRng::new_unseeded();
+    loop
+    {
+        let zundoko: bool = rng.gen();
+        print!("{} ", if zundoko { "ズン" } else { "ドコ" });
+        if zundoko
+        {
+            count += 1;
+        }
+        else if count >= 4
+        {
+            break
+        }
+        else
+        {
+            count = 0;
+        }
+    }
+    println!("キ・ヨ・シ！");
+}
 
 fn main() -> Result<(), Box<dyn std::error::Error>>
 {
@@ -32,6 +57,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                     else
                     {
                         eprintln!("ポインタが大きすぎます");
+                        break;
                     }
                 },
                 "ズンズンドコ" =>
@@ -43,6 +69,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                     else
                     {
                         eprintln!("ポインタが負になりました");
+                        break;
                     }
                 },
                 "ズンドコズン" =>
@@ -66,6 +93,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                                 if index >= li_size
                                 {
                                     eprintln!("ドコズンドコがありません");
+                                    break;
                                 }
 
                                 if &li[index..index + 18] == "ドコズンズン"
@@ -112,11 +140,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>>
                 },
                 "キ・ヨ・シ！" =>
                 {
-                    print!("Hello, World!");
+                    zundoko_kiyoshi();
                 },
                 _ =>
                 {
                     eprintln!("ズンドコできません");
+                    break;
                 },
             }
             index += 18;
